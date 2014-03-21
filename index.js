@@ -1,7 +1,9 @@
 var http        = require('http'),
     url         = require('url'),
     req         = require('./lib/request/request')
-    factories   = require('./lib/factory');
+    factories   = require('./lib/factory'),
+    filter      = require('./lib/filter'),
+    Request     = require('./lib/request/request');
 
 var log = console.log;
 /**
@@ -40,10 +42,14 @@ var log = console.log;
  * Date:
  * Error Codes:
  */
+new Request();
+var fil = new filter.Filter('postalcode', '=', 4500, ['venues', 'address']);
+console.log(fil);
+console.log(fil.toString());
 
-http.createServer(function(request, response){
+/*http.createServer(function(request, response){
     var factory = new factories.HTTPRequestFactory();
         factory.createUnifiedRequest(request, function(err, req){
 
         });
-}).listen(8080);
+}).listen(8080);*/
