@@ -3,7 +3,7 @@
 Application internal, protocol independent request/response implementation.
 
 ##Todo
-  - Discuss which errors should be processed by the Services i.e. have to be implemented by the internal response.
+  1 Discuss which errors should be processed by the Services i.e. have to be implemented by the internal response.
 
 ##Notes
 

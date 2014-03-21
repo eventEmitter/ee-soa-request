@@ -1,14 +1,27 @@
 /**
  * url: /event
- * select: 'title, event.venues.address, event.venues.title, event.artists'
- * filter: 'id_tenant = 10, date > now, event.venues.address.postalcode = 4500'
+ * select: 'title, venues, artists'
+ * filter: 'tenant.id = 10, date > now, venues.address.postalcode = 4500'
  * order: 'dateStart ASC'
+ *
+ * fields that are in twice get concatenated by or?
  */
 var Example = {
-    action: 'read'
-    , collection: 'event'
-    , select: ['title'] // how do we realize that... do we append a filter? events.reduce(cb)?
-    , filters: ['date > now', 'id_tenant = 10']
+    action:         'read'
+    , collection:   'event'
+    , select:       ['title'] // how do we realize that... do we append a filter? events.reduce(cb)?
+    , filters:      [
+        {
+            field: 'date'
+            , operator: '<'
+            , value: 'now'  // this needs to be resolved on the tenant to have adequate timezone support!
+        }
+        , {
+            field: 'tenant'
+            , operator: '='
+            , value: '10'
+        }
+    ]
     , isResolved: true
     , subRequests: [
         {
