@@ -38,6 +38,7 @@ var log = console.log;
  * Content-Length:
  * Location: /user/1
  * Date:
+ * Error Codes:
  */
 
 http.createServer(function(request, response){
