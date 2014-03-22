@@ -12,7 +12,8 @@
     "url": "https://github.com/eventEmitter/ee-soa-request/issues"
   },
   "dependencies": {
-    "ee-class": "~0.3.0"
+    "ee-class": "~0.3.0",
+    "mocha": "~1.18.2"
   },
   "devDependencies": {
     "supervisor": "~0.5.7"
@@ -20,6 +21,6 @@
   "optionalDependencies": {},
   "keywords": [],
   "scripts": {
-    "test": ""
+    "test": "./node_modules/.bin/mocha"
   }
 }
