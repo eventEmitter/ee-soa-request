@@ -4,7 +4,8 @@ Application internal, protocol independent request/response implementation.
 
 ##Tobi
 Please use getters! I'd like to be able to preprocess things.
-Request provides a variety of getters such as:
+The Request is not fully tested yet, feel free to add additional tests.
+Provides a variety of getters such as:
 
     request.getCollection():string
     request.getController():string
