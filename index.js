@@ -1,6 +1,4 @@
 var http        = require('http'),
-    url         = require('url'),
-    req         = require('./lib/request/request'),
     filter      = require('./lib/filter'),
     Request     = require('./lib/request/request');
 
