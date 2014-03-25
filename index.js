@@ -1,6 +1,6 @@
-var http        = require('http'),
-    filter      = require('./lib/filter'),
-    Request     = require('./lib/request/request');
+var filter      = require('./lib/filter'),
+    req         = require('./lib/request'),
+    util        = require('./lib/util');
 
 var log = console.log;
 /**
@@ -40,14 +40,8 @@ var log = console.log;
  * Error Codes:
  */
 
-var fil = new filter.Filter('postalcode', '=', 4500, ['venues', 'address']);
-//console.log(fil);
-//console.log(fil.toString());
-
-module.exports.Request = Request;
-/*http.createServer(function(request, response){
-    var factory = new factories.HTTPRequestFactory();
-        factory.createUnifiedRequest(request, function(err, req){
-
-        });
-}).listen(8080);*/
+module.exports.Request          = req.Request;
+module.exports.Response         = req.Response;
+module.exports.Filter           = filter.Filter;
+module.exports.FilterCollection = filter.FilterCollection;
+module.exports.util             = util;
