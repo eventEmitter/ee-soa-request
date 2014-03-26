@@ -13,7 +13,8 @@
   },
   "dependencies": {
     "ee-class": "~0.3.0",
-    "mocha": "~1.18.2"
+    "mocha": "~1.18.2",
+    "ee-types": "~0.1.3"
   },
   "devDependencies": {
     "supervisor": "~0.5.7"
