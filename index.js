@@ -40,8 +40,6 @@ var log = console.log;
  * Error Codes:
  */
 
-module.exports.Request          = req.Request;
-module.exports.Response         = req.Response;
-module.exports.Filter           = filter.Filter;
-module.exports.FilterCollection = filter.FilterCollection;
+module.exports.request          = req;
+module.exports.filter           = filter;
 module.exports.util             = util;
