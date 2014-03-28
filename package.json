@@ -22,6 +22,6 @@
   "optionalDependencies": {},
   "keywords": [],
   "scripts": {
-    "test": "./node_modules/.bin/mocha"
+    "test": "./node_modules/.bin/mocha --reporter spec"
   }
 }
