@@ -39,7 +39,7 @@ var log = console.log;
  * Date:
  * Error Codes:
  */
-new req.UpdateRequest();
+
 module.exports.request          = req;
 module.exports.filter           = filter;
 module.exports.util             = util;
