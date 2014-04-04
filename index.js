@@ -1,5 +1,6 @@
 var filter      = require('./lib/filter'),
     req         = require('./lib/request'),
+    resp        = require('./lib/response'),
     util        = require('./lib/util');
 
 var log = console.log;
@@ -41,5 +42,6 @@ var log = console.log;
  */
 
 module.exports.request          = req;
+module.exports.response         = resp;
 module.exports.filter           = filter;
 module.exports.util             = util;

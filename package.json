@@ -12,9 +12,9 @@
     "url": "https://github.com/eventEmitter/ee-soa-request/issues"
   },
   "dependencies": {
-    "ee-class": "~0.3.0",
+    "ee-class": "0.3.*",
     "mocha": "~1.18.2",
-    "ee-types": "~0.1.3"
+    "ee-types": "0.1.*"
   },
   "devDependencies": {
     "supervisor": "~0.5.7"
