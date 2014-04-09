@@ -18,6 +18,14 @@ Provides a variety of getters such as:
   2. Should getController be asynchronous to enable loading it from a distributed service? i.e. the resolver?
 
 ##Notes
+Added handle method to the different requests which perform a double dispatch. If you need to perform a request specific
+action use the handle method instead of using switches:
+
+    var handler = {
+        , handleReadRequest: function(request)
+        ,
+    }
+
 
 ###Status Codes
 
