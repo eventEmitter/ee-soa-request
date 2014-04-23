@@ -40,7 +40,6 @@ var log = console.log;
  * Date:
  * Error Codes:
  */
-
 module.exports.request          = req;
 module.exports.response         = resp;
 module.exports.filter           = filter;

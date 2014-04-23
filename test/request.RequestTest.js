@@ -1,5 +1,8 @@
 var assert = require('assert')
-    Request = require('../lib/request/Request');
+    request = require('../lib/request');
+
+var Format = request.Format,
+    Request = request.Request;
 
 describe('Request', function(){
 
@@ -52,5 +55,25 @@ describe('Request', function(){
             assert.equal(true, req.acceptsLanguage('De_De'));
         });
 
+    });
+
+    describe('#acceptsFormat()', function(){
+
+        it('returns false if empty', function(){
+            var req = new Request();
+            assert(!req.acceptsFormat());
+        });
+
+        it('returns true if format is is accepted', function(){
+            var req = new Request();
+            req.addFormat('application', 'json');
+            assert(req.acceptsFormat('application', 'json'));
+        });
+
+        it('returns false if format is not accepted', function(){
+            var req = new Request();
+            req.addFormat('application', 'json');
+            assert(!req.acceptsFormat('text', 'plain'));
+        });
     });
 });
