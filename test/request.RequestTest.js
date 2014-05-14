@@ -76,4 +76,16 @@ describe('Request', function(){
             assert(!req.acceptsFormat('text', 'plain'));
         });
     });
+
+    describe('Child Classes (Quick and dirty)', function(){
+        it('should be possible to initialize all child classes', function(){
+            new request.InfoRequest();
+            new request.OptionsRequest();
+            new request.ReadRequest();
+            new request.UpdateRequest();
+            new request.WriteRequest();
+            new request.DeleteRequest();
+            new request.CreateRequest();
+        });
+    });
 });
