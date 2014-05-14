@@ -16,6 +16,7 @@ describe('Collection', function(){
 
         it('or the last element', function(){
             coll.push(5);
+            assert.equal(5, coll.last());
             coll.push(10);
             assert.equal(10, coll.last());
         });
