@@ -57,6 +57,15 @@ describe('Request', function(){
 
     });
 
+    describe('#setRange()', function(){
+        it('should set the range correctly', function(){
+            var req = new Request();
+            req.setRange(0, 10);
+            assert.equal(req.getRange().from, 0);
+            assert.equal(req.getRange().to, 10);
+        });
+    });
+
     describe('#acceptsFormat()', function(){
 
         it('returns false if empty', function(){
