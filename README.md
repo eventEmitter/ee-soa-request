@@ -2,18 +2,7 @@
 
 Application internal, protocol independent request/response implementation.
 
-##Tobi
-Please use getters! I'd like to be able to preprocess things.
-The Request is not fully tested yet, feel free to add additional tests.
-Provides a variety of getters such as:
-
-    request.getCollection():string
-    request.getController():string
-    request.getResourceId():int
-    request.queriesCollection():bool
-    request.getAction():int
-
-##Todo
+## Todo
   1. Discuss which errors should be processed by the Services i.e. have to be implemented by the internal response.
   2. Should getController be asynchronous to enable loading it from a distributed service? i.e. the resolver?
 

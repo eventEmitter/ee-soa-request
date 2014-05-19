@@ -37,10 +37,9 @@ var log = console.log;
  * Content-Language: en
  * Content-Length:
  * Location: /user/1
- * Date:
+ * Date:y
  * Error Codes:
  */
 module.exports.request          = req;
-module.exports.response         = resp;
 module.exports.filter           = filter;
 module.exports.util             = util;

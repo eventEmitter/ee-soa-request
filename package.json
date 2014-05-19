@@ -1,27 +1,27 @@
 {
-    "name": "ee-soa-request",
-    "description": "System internal request response implementation",
-    "version": "0.1.1",
-    "homepage": "https://github.com/eventEmitter/ee-soa-request",
-    "author": "Michael Rüfenacht <ruefe@rcky.ch> (http://rcky.ch/)",
-    "licence": "mit",
-    "engines": {
-        "node": ">=v0.10.25"
-    },
-    "bugs": {
-        "url": "https://github.com/eventEmitter/ee-soa-request/issues"
-    },
-    "dependencies": {
-        "ee-class": "1.0.*",
-        "mocha": "~1.18.*",
-        "ee-types": "0.1.*"
-    },
-    "devDependencies": {
-        "supervisor": "~0.5.7"
-    },
-    "optionalDependencies": {},
-    "keywords": [],
-    "scripts": {
-        "test": "./node_modules/.bin/mocha --reporter spec"
+      "name"                        : "ee-soa-request"
+    , "description"                 : "System internal request response implementation"
+    , "version"                     : "0.2.0"
+    , "homepage"                    : "https://github.com/eventEmitter/ee-soa-request"
+    , "author"                      : "Michael Rüfenacht <ruefe@rcky.ch> (http://rcky.ch/)"
+    , "licence"                     : "mit"
+    , "engines": {
+        "node"                      : ">=v0.10.25"
+    }
+    , "bugs": {
+        "url"                       : "https://github.com/eventEmitter/ee-soa-request/issues"
+    }
+    , "dependencies": {
+          "ee-class"                : "1.0.*"
+        , "ee-types"                : "0.1.*"
+    }
+    , "devDependencies": {
+          "supervisor"              : "~0.5.7"
+        , "mocha"                   : "~1.18.*"
+    }
+    , "optionalDependencies"        : {}
+    , "keywords"                    : ["ee", "soa", "response"]
+    , "scripts": {
+        "test"                      : "./node_modules/.bin/mocha --reporter spec"
     }
 }
