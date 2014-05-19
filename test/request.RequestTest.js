@@ -1,8 +1,7 @@
 var assert = require('assert')
-    request = require('../lib/request');
+    Request = require('../');
 
-var Format = request.Format,
-    Request = request.Request;
+var Format = Request.Format;
 
 describe('Request', function(){
 
@@ -88,13 +87,13 @@ describe('Request', function(){
 
     describe('Child Classes (Quick and dirty)', function(){
         it('should be possible to initialize all child classes', function(){
-            new request.InfoRequest();
-            new request.OptionsRequest();
-            new request.ReadRequest();
-            new request.UpdateRequest();
-            new request.WriteRequest();
-            new request.DeleteRequest();
-            new request.CreateRequest();
+            new Request.InfoRequest();
+            new Request.OptionsRequest();
+            new Request.ReadRequest();
+            new Request.UpdateRequest();
+            new Request.WriteRequest();
+            new Request.DeleteRequest();
+            new Request.CreateRequest();
         });
     });
 });

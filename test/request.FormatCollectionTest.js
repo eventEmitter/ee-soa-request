@@ -1,5 +1,5 @@
 "use strict";
-var request = require('../lib/request'),
+var request = require('../'),
     assert = require('assert');
 
 var FormatCollection    = request.FormatCollection,
