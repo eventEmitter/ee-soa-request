@@ -83,6 +83,13 @@ describe('Request', function(){
             req.addFormat('application', 'json');
             assert(!req.acceptsFormat('text', 'plain'));
         });
+
+        it('provides parameters with fallbacks', function(){
+            var req = new Request().setParameters({one: 2, two: true})
+            assert.strictEqual(2, req.getParameter('one'));
+            assert.strictEqual(true, req.getParameter('two'));
+            assert.strictEqual('fallback', req.getParameter('three', 'fallback'));
+        });
     });
 
     describe('Child Classes (Quick and dirty)', function(){
