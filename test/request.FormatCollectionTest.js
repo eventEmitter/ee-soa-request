@@ -32,6 +32,11 @@ describe('FormatCollection', function(){
                 assert(!collection.isCompatibleTo(formatWildCard));
             });
 
+            it('should correctly accept a wildcard if the wildcard is also in the formats', function(){
+                var collection = new FormatCollection().pushAll([formatJSON, formatJPEG, formatWildCard]);
+                assert(collection.isCompatibleTo(new Format()));
+            });
+
             it('should should be incompatible to other types', function(){
                 var collection = new FormatCollection().pushAll([formatJSON, formatJPEG]);
                 assert(!collection.isCompatibleTo(formatPlainText));
