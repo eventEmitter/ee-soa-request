@@ -77,6 +77,10 @@ A request is often created to query specific relations/models.
     request.getLanguages()
     request.acceptsLanguage(languageString)
 
+    request.hasRange()
+    request.setRange(from, to)
+    request.getRange(): {from:mixed, to:mixed}  // Ranges (from, to) are set to null if not present
+
     // filters
     // projections
     // orderings
