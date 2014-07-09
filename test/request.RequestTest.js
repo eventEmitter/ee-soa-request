@@ -92,6 +92,25 @@ describe('Request', function(){
         });
     });
 
+    describe('#setContent()', function(){
+        var req = new Request();
+        it('should set the content', function(done){
+            req.setContent('test');
+            req.getContent(function(err, content){
+                assert.equal(null, err);
+                assert.equal('test', content);
+                done();
+            });
+        });
+        it('and mark the request accordingly', function(){
+            assert(req.hasContent());
+        });
+
+        it('should reset the flag if the content is "nullable"', function(){
+            assert(req.setContent().hasContent() === false);
+        });
+    });
+
     describe('Child Classes (Quick and dirty)', function(){
         it('should be possible to initialize all child classes', function(){
             new Request.InfoRequest();
@@ -101,6 +120,54 @@ describe('Request', function(){
             new Request.WriteRequest();
             new Request.DeleteRequest();
             new Request.CreateRequest();
+        });
+    });
+});
+
+describe('UpdateRequest, WriteRequest, CreateRequest', function(){
+    describe('validate', function(){
+
+        var   write = new Request.WriteRequest()
+            , update = new Request.UpdateRequest()
+            , create = new Request.CreateRequest()
+            , contentHolders = [write, update, create];
+
+        it('should fail on a plain setup', function(){
+            contentHolders.forEach(function(current){
+                assert.throws(current.validate.bind(current));
+            });
+        });
+
+        it('should not fail if no content is set on validation', function(){
+            contentHolders.forEach(function(current){
+                // add wildcard
+                current.addFormat();
+                assert.doesNotThrow(current.validate.bind(current));
+            });
+        });
+
+        it('should fail if there is content and no content language or type is set', function(){
+            contentHolders.forEach(function(current){
+                // add content and set mark
+                current.setContent('test');
+                assert.throws(current.validate.bind(current));
+            });
+        });
+
+        it('should fail if there is content and no content type type is set', function(){
+            contentHolders.forEach(function(current){
+                // add language but no type
+                current.setContentLanguage('de');
+                assert.throws(current.validate.bind(current));
+            });
+        });
+
+        it('should not fail if all attributes are set', function(){
+            contentHolders.forEach(function(current){
+                // add type
+                current.setContentType('text/plain');
+                assert.doesNotThrow(current.validate.bind(current));
+            });
         });
     });
 });

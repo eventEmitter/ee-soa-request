@@ -1,6 +1,6 @@
 {
       "name"                        : "ee-soa-request"
-    , "description"                 : "System internal request response implementation"
+    , "description"                 : "System internal request response implementation."
     , "version"                     : "0.2.4"
     , "homepage"                    : "https://github.com/eventEmitter/ee-soa-request"
     , "author"                      : "Michael Rüfenacht <ruefe@rcky.ch> (http://rcky.ch/)"
