@@ -1,7 +1,7 @@
 {
       "name"                        : "ee-soa-request"
     , "description"                 : "System internal request response implementation."
-    , "version"                     : "0.2.5"
+    , "version"                     : "0.2.6"
     , "homepage"                    : "https://github.com/eventEmitter/ee-soa-request"
     , "author"                      : "Michael Rüfenacht <ruefe@rcky.ch> (http://rcky.ch/)"
     , "licence"                     : "mit"
@@ -19,7 +19,7 @@
           "mocha"                   : "1.18.*"
     }
     , "optionalDependencies"        : {}
-    , "keywords"                    : ["ee", "soa", "response"]
+    , "keywords"                    : ["ee", "soa", "request"]
     , "scripts": {
         "test"                      : "./node_modules/.bin/mocha --reporter spec"
     }

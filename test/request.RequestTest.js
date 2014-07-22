@@ -113,13 +113,19 @@ describe('Request', function(){
 
     describe('Child Classes (Quick and dirty)', function(){
         it('should be possible to initialize all child classes', function(){
-            new Request.InfoRequest();
-            new Request.OptionsRequest();
-            new Request.ReadRequest();
-            new Request.UpdateRequest();
-            new Request.WriteRequest();
-            new Request.DeleteRequest();
-            new Request.CreateRequest();
+            var requests = {
+                  info:     new Request.InfoRequest()
+                , options:  new Request.OptionsRequest()
+                , read:     new Request.ReadRequest()
+                , update:   new Request.UpdateRequest()
+                , write:    new Request.WriteRequest()
+                , delete:   new Request.DeleteRequest()
+                , create:   new Request.CreateRequest()
+            };
+
+            /*for(var name in requests){
+                console.log(requests[name].getVersion());
+            }*/
         });
     });
 });
