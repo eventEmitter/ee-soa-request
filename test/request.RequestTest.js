@@ -124,7 +124,7 @@ describe('Request', function(){
 
         it('should properly expose action names (which is BS!)', function(){
             assert.equal(requests.update.getActionName(),   'update');
-            assert.equal(requests.info.getActionName(),     'head');
+            assert.equal(requests.info.getActionName(),     'info');
             assert.equal(requests.options.getActionName(),  'describe');
             assert.equal(requests.create.getActionName(),   'create');
             assert.equal(requests.read.getActionName(),     'list');
