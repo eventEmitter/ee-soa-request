@@ -101,20 +101,19 @@ The following request types are defined (based on the http verbs for rest interf
 The different types of requests implement a `dispatch` method which takes a handler as its argument (the request performs a so called double-dispatch, this allows you to easily handle the request without knowing its type upfront). A handler is described by the following set of methods (to say it in terms of duck-typing)
 
     var handler = {
-        handleCreateRequest: function(req, resp){ ... }
-        handleDeleteRequest: function(req, resp){ ... }
-        handleInfoRequest: function(req, resp){ ... }
-        handleOptionsRequest: function(req, resp){ ... }
-        handleReadRequest: function(req, resp){ ... }
-        handleUpdateRequest: function(req, resp){ ... }
-        handleWriteRequest: function(req, resp){ ... }
-        handleUnknown: function(error){ ... }
+        handleCreateRequest: function(req, options){ ... }
+        handleDeleteRequest: function(req, options){ ... }
+        handleInfoRequest: function(req, options){ ... }
+        handleOptionsRequest: function(req, options){ ... }
+        handleReadRequest: function(req, options){ ... }
+        handleUpdateRequest: function(req, options){ ... }
+        handleWriteRequest: function(req, options){ ... }
     }
 
-See the following (rudimentary) example for a read request:
+You can use the options parameter to pass in additional data e.g. the request if you want to send the your data directly from your handler. See the following (rudimentary) example for a read request:
 
     var handler = {
-        handleReadRequest: function(req, resp){
+        handleReadRequest: function(req, options){
             // list
             var   query = 'SELECT * FROM :collection:'
                 , params = {collection: req.getCollection()};
@@ -126,11 +125,11 @@ See the following (rudimentary) example for a read request:
             }
 
             var data = this.performQuery(query, params);
-            resp.send(data);
+            options.response.send(options.response.OK, data);
         }
     };
 
-    request.dispatch(handler, response);
+    request.dispatch(handler, {response: response});
 
 ## Format
 Formats are the internal representation of the internet media types (currently not supporting parameters such as the encoding). All types of `Request` objects provide easy accessors to preserve you from dealing with the internal data format.
