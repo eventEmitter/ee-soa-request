@@ -87,11 +87,14 @@ A request is often created to query specific relations/models.
     // orderings
     // orderings
 
-#### Accepts Format
-This method can be used to to check if a request accepts a specific response format based on the internet media
-type (type, subtype). It returns the priority of the passed format to allow your service or controller to check
-which formats are accepted, and which should be delivered (the relation is `covariant`, so `image/*` accepts `image/jpg`
-but not the other way round). Lets consider an example for an simple image service:
+## Format
+Formats are the internal representation of the internet media types (currently not supporting parameters such as the encoding). All types of `Request` objects provide easy accessors to preserve you from dealing with the internal data format.
+
+### addFormat(type, subtype)
+Add a format to the current format collection of the request (type and subtype are `strings` the asterisk represents the wildcard.
+
+### acceptsFormat(type, subtype)
+This method can be used to to check if a request accepts a specific response format based on the internet media type (type, subtype). It returns the priority of the passed format to allow your service or controller to check which formats are accepted, and which should be delivered (the relation is `covariant`, so `image/*` accepts `image/jpg` but not the other way round). Lets consider an example for an simple image service:
 
     // The accepted formats are image/jpg, application/*
     // We can create jpgs and json
@@ -108,5 +111,4 @@ but not the other way round). Lets consider an example for an simple image servi
 
     return this.sendJSONResponse();
 
-One can immediately see, that we need the priority to be able to distinguish which response to send (because the
-request accepts both). More formats can easily be checked in a loop.
+One can immediately see, that we need the priority to be able to distinguish which response to send (because the request accepts both). More formats can easily be checked in a loop.

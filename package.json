@@ -15,9 +15,11 @@
           "ee-class"                : "1.0.*"
         , "ee-types"                : "0.1.*"
     }
+
     , "devDependencies": {
           "mocha"                   : "1.18.*"
     }
+
     , "optionalDependencies"        : {}
     , "keywords"                    : ["ee", "soa", "request"]
     , "scripts": {
