@@ -111,21 +111,38 @@ describe('Request', function(){
         });
     });
 
-    describe('Child Classes (Quick and dirty)', function(){
-        it('should be possible to initialize all child classes', function(){
-            var requests = {
-                  info:     new Request.InfoRequest()
-                , options:  new Request.OptionsRequest()
-                , read:     new Request.ReadRequest()
-                , update:   new Request.UpdateRequest()
-                , write:    new Request.WriteRequest()
-                , delete:   new Request.DeleteRequest()
-                , create:   new Request.CreateRequest()
-            };
+    describe('Child Classes', function(){
+        var requests = {
+            info:     new Request.InfoRequest()
+            , options:  new Request.OptionsRequest()
+            , read:     new Request.ReadRequest()
+            , update:   new Request.UpdateRequest()
+            , write:    new Request.WriteRequest()
+            , delete:   new Request.DeleteRequest()
+            , create:   new Request.CreateRequest()
+        };
 
-            /*for(var name in requests){
-                console.log(requests[name].getVersion());
-            }*/
+        it('should properly expose action names (which is BS!)', function(){
+            assert.equal(requests.update.getActionName(),   'update');
+            assert.equal(requests.info.getActionName(),     'head');
+            assert.equal(requests.options.getActionName(),  'describe');
+            assert.equal(requests.create.getActionName(),   'create');
+            assert.equal(requests.read.getActionName(),     'list');
+            assert.equal(requests.write.getActionName(),    'createOrUpdate');
+            assert.equal(requests.delete.getActionName(),   'delete');
+        });
+
+        it('and switch them under certain conditions', function(){
+            requests.read.setResourceId(10);
+            assert.equal(requests.read.getActionName(),   'listOne');
+
+            requests.write.setRelatedTo('event', 10);
+            requests.update.setRelatedTo('event', 10);
+            requests.create.setRelatedTo('event', 10);
+
+            assert.equal(requests.create.getActionName(),   'mapping');
+            assert.equal(requests.write.getActionName(),    'mapping');
+            assert.equal(requests.update.getActionName(),   'mapping');
         });
     });
 });
@@ -133,7 +150,7 @@ describe('Request', function(){
 describe('UpdateRequest, WriteRequest, CreateRequest', function(){
     describe('validate', function(){
 
-        var   write = new Request.WriteRequest()
+        var   write  = new Request.WriteRequest()
             , update = new Request.UpdateRequest()
             , create = new Request.CreateRequest()
             , contentHolders = [write, update, create];
