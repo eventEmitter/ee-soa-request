@@ -87,6 +87,51 @@ A request is often created to query specific relations/models.
     // orderings
     // orderings
 
+## Types and Dispatching
+The following request types are defined (based on the http verbs for rest interfaces), please use them and not the generic `Request`.
+
+  - **DeleteRequest** _DELETE_
+  - **InfoRequest** _HEAD_
+  - **CreateRequest** _PUT_
+  - **OptionsRequest** _OPTIONS_
+  - **ReadRequest** _GET_
+  - **UpdateRequest** _PATCH_
+  - **WriteRequest** _POST_
+
+The different types of requests implement a `dispatch` method which takes a handler as its argument (the request performs a so called double-dispatch, this allows you to easily handle the request without knowing its type upfront). A handler is described by the following set of methods (to say it in terms of duck-typing)
+
+    var handler = {
+        handleCreateRequest: function(req, resp){ ... }
+        handleDeleteRequest: function(req, resp){ ... }
+        handleInfoRequest: function(req, resp){ ... }
+        handleOptionsRequest: function(req, resp){ ... }
+        handleReadRequest: function(req, resp){ ... }
+        handleUpdateRequest: function(req, resp){ ... }
+        handleWriteRequest: function(req, resp){ ... }
+        handleUnknown: function(error){ ... }
+    }
+
+See the following (rudimentary) example for a read request:
+
+    var handler = {
+        handleReadRequest: function(req, resp){
+            // list
+            var   query = 'SELECT * FROM :collection:'
+                , params = {collection: req.getCollection()};
+
+            // listOne
+            if(req.hasResourceId()){
+                params['id'] = req.getResourceId();
+                query += 'WHERE `id`= :id:';
+            }
+
+            var data = this.performQuery(query, params);
+            resp.send(data);
+        }
+    };
+
+    request.dispatch(handler, response);
+
 ## Format
 Formats are the internal representation of the internet media types (currently not supporting parameters such as the encoding). All types of `Request` objects provide easy accessors to preserve you from dealing with the internal data format.
 

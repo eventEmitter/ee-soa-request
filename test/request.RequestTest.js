@@ -135,7 +135,9 @@ describe('Request', function(){
         it('and switch them under certain conditions', function(){
             requests.read.setResourceId(10);
             assert.equal(requests.read.getActionName(),   'listOne');
+        });
 
+        it.skip('and switch them under certain conditions', function(){
             requests.write.setRelatedTo('event', 10);
             requests.update.setRelatedTo('event', 10);
             requests.create.setRelatedTo('event', 10);
@@ -143,6 +145,57 @@ describe('Request', function(){
             assert.equal(requests.create.getActionName(),   'mapping');
             assert.equal(requests.write.getActionName(),    'mapping');
             assert.equal(requests.update.getActionName(),   'mapping');
+        });
+
+        describe('to remove the action names they provide a dispatch method', function(){
+            it('which performs a double dispatch', function(done){
+                var handler = {
+
+                    read: 0
+                  , write: 0
+                  , update: 0
+                  , info: 0
+                  , options: 0
+                  , create: 0
+                  , delete: 0
+
+                    , handleReadRequest: function(req){
+                        this.read++;
+                    }
+                    , handleWriteRequest: function(req){
+                        this.write++;
+                    }
+                    , handleUpdateRequest: function(req){
+                        this.update++;
+                    }
+                    , handleInfoRequest: function(req){
+                        this.info++;
+                    }
+                    , handleOptionsRequest: function(req){
+                        this.options++;
+                    }
+                    , handleCreateRequest: function(req){
+                        this.create++;
+                    }
+                    , handleDeleteRequest: function(req){
+                        this.delete++;
+                    }
+                };
+
+                for(var name in requests){
+                    requests[name].handle(handler);
+                }
+
+                assert.equal(1, handler.read);
+                assert.equal(1, handler.write);
+                assert.equal(1, handler.update);
+                assert.equal(1, handler.info);
+                assert.equal(1, handler.options);
+                assert.equal(1, handler.create);
+                assert.equal(1, handler.delete);
+
+                done();
+            });
         });
     });
 });
