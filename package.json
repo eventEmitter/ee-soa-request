@@ -1,11 +1,7 @@
 {
       "name"                        : "ee-soa-request"
     , "description"                 : "System internal request response implementation."
-<<<<<<< HEAD
-    , "version"                     : "0.2.16"
-=======
-    , "version"                     : "0.2.18"
->>>>>>> 0ddfccef23959584137fd9997485aeb3ae606c44
+    , "version"                     : "0.2.20"
     , "homepage"                    : "https://github.com/eventEmitter/ee-soa-request"
     , "author"                      : "Michael Rüfenacht <ruefe@rcky.ch> (http://rcky.ch/)"
     , "license"                     : "MIT"
