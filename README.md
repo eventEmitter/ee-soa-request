@@ -1,5 +1,7 @@
 #ee-soa-request
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/eventEmitter/ee-soa-request.svg)](https://greenkeeper.io/)
+
 Application internal, protocol independent request/response implementation.
 
 ## installation
